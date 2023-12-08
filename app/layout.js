@@ -1,7 +1,11 @@
-import { Inter } from 'next/font/google'
+import { Inter, Josefin_Sans } from 'next/font/google'
 import './globals.css'
+import Container from '@/components/UI/Container'
+import { Suspense } from 'react'
+import Loading from '@/components/UI/Loading'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--primary-font' })
+const josephin = Josefin_Sans({ subsets: ['latin'], variable: '--secondary-font' })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${josephin.variable}`}>
+        
+          <Container>{children}</Container>
+      </body>
     </html>
   )
 }
